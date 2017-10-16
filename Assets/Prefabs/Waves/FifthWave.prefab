@@ -1036,11 +1036,8 @@ MonoBehaviour:
   - {fileID: 4402416971590174}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 100
   shotDelay: 2.5
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114161449119388246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1094,11 +1091,8 @@ MonoBehaviour:
   - {fileID: 4734879509061348}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 100
   shotDelay: 2.5
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114350378302161060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1116,11 +1110,8 @@ MonoBehaviour:
   - {fileID: 4266117250702090}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 100
   shotDelay: 2.5
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114357838565807000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1155,11 +1146,8 @@ MonoBehaviour:
   - {fileID: 4165708163376500}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114460869370882756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1176,11 +1164,8 @@ MonoBehaviour:
   - {fileID: 4494952681830176}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114525024883438272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1197,11 +1182,8 @@ MonoBehaviour:
   - {fileID: 4756906090645208}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114527933291312990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1254,11 +1236,8 @@ MonoBehaviour:
   - {fileID: 4587647614874022}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114767114312956930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1330,11 +1309,8 @@ MonoBehaviour:
   - {fileID: 4329570067435658}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 100
   shotDelay: 2.5
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!212 &212040454331823732
 SpriteRenderer:
   m_ObjectHideFlags: 1

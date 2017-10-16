@@ -5,6 +5,6 @@ using UnityEngine;
 public class DestroyOverTime : MonoBehaviour {
 	
 	void Update () {
-        Destroy(gameObject, 0.75f);
+        Destroy(gameObject, 0.3f);
 	}
 }

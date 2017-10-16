@@ -595,11 +595,8 @@ MonoBehaviour:
   - {fileID: 4924623956965664}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114216820744140886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -616,11 +613,8 @@ MonoBehaviour:
   - {fileID: 4888262376898278}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114238741898950754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -691,11 +685,8 @@ MonoBehaviour:
   - {fileID: 4903813241933264}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114700526594158878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -730,11 +721,8 @@ MonoBehaviour:
   - {fileID: 4032591604344106}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114883945602859626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -769,11 +757,8 @@ MonoBehaviour:
   - {fileID: 4704524212077722}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 50
   shotDelay: 2
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!212 &212006068667930654
 SpriteRenderer:
   m_ObjectHideFlags: 1

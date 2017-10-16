@@ -19,15 +19,11 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float fireRate = 5;
     private float timeToFire = 0;
-    [HideInInspector]
-    public bool Boost = false;
 
-    public GameObject[] shields;
 
 	void Start () {
         ThisTransform = GetComponent<Transform>();
         myAnimator = GetComponent<Animator>();
-        shields = GameObject.FindGameObjectsWithTag("Shield");
 	}
 
 	void Update () {
@@ -47,7 +43,7 @@ public class PlayerController : MonoBehaviour {
         {
             timeToFire = Time.time + 1 / fireRate;
             Instantiate(lasers[0], lasersPoint[0].position, lasersPoint[0].rotation);
-            if (Boost)
+            if (GM.Instance.Boost)
             {
                 Instantiate(lasers[1], lasersPoint[1].position, lasersPoint[1].rotation);
                 Instantiate(lasers[1], lasersPoint[2].position, lasersPoint[2].rotation);

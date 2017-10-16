@@ -9,8 +9,6 @@ public class LaserController : MonoBehaviour {
     [SerializeField]
     private GameObject laserImpacts;
     [SerializeField]
-    private string Tag;
-    [SerializeField]
     private GameObject explosion;
 
     void Update ()
@@ -22,15 +20,19 @@ public class LaserController : MonoBehaviour {
             Instantiate(laserImpacts, transform.position, transform.rotation);
             Destroy(gameObject);
         
-        if (other.CompareTag(Tag))
+        if (other.CompareTag("Enemy"))
         {
-            if (explosion != null)
-            {
-                Instantiate(explosion, transform.position, transform.rotation);
-            }
+            Instantiate(explosion, transform.position, transform.rotation);
             GM.Instance.SpawnPowerUp(transform.position);
+            GM.Instance.AddScore(other.GetComponent<EnemyShoot>().Value);
             Destroy(other.gameObject);
         } 
+
+        if (other.CompareTag("Player"))
+        {
+            GM.Instance.loseLife();
+        }
+
         if (other.CompareTag("Shield"))
         {
             other.gameObject.SetActive(false);

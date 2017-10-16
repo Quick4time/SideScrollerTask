@@ -142,11 +142,8 @@ MonoBehaviour:
   - {fileID: 4310993836627868}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!212 &212804808253357282
 SpriteRenderer:
   m_ObjectHideFlags: 1

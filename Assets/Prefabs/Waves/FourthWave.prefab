@@ -839,11 +839,8 @@ MonoBehaviour:
   - {fileID: 4747655777353274}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114052872821587056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -860,11 +857,8 @@ MonoBehaviour:
   - {fileID: 4210867757492318}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114077200606062374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -935,11 +929,8 @@ MonoBehaviour:
   - {fileID: 4339446214176032}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114282400750309526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -956,11 +947,8 @@ MonoBehaviour:
   - {fileID: 4847381660612194}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114346040368925126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -977,11 +965,8 @@ MonoBehaviour:
   - {fileID: 4692822581952308}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114367299126502404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1034,11 +1019,8 @@ MonoBehaviour:
   - {fileID: 4960220934887654}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114517682400692226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,11 +1037,8 @@ MonoBehaviour:
   - {fileID: 4013108248564326}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114664526235759932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1076,11 +1055,8 @@ MonoBehaviour:
   - {fileID: 4758862211829292}
   impactEnemy: {fileID: 1557948382632680, guid: a099253bcede34641a7ffee96aacb3b9,
     type: 2}
+  Value: 70
   shotDelay: 3
-  powerUp:
-  - {fileID: 1404866061899492, guid: ff58aad32b67fa94bb4942a3ed7a919c, type: 2}
-  - {fileID: 1693562145901790, guid: 3785ba3e009e9cb46beea52803689642, type: 2}
-  - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
 --- !u!114 &114737930733622962
 MonoBehaviour:
   m_ObjectHideFlags: 1

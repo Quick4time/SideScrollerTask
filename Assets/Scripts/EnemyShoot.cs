@@ -11,6 +11,8 @@ public class EnemyShoot : MonoBehaviour {
     [SerializeField]
     private GameObject impactEnemy;
 
+    public int Value;
+
     [SerializeField]
     private float shotDelay;
     private float shotCounter = 1.0f;
@@ -31,8 +33,8 @@ public class EnemyShoot : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
+            GM.Instance.loseLife();
+            Destroy(gameObject);
             Instantiate(impactEnemy, transform.position, transform.rotation);
         }
     }

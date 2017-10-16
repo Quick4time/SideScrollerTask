@@ -33,8 +33,8 @@ public class MoveAsteroids : MonoBehaviour {
     {
         if (collision.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
-            Destroy(this.gameObject);
+            GM.Instance.loseLife();
+            Destroy(gameObject);
         }
         if (collision.CompareTag("Shield"))
         {

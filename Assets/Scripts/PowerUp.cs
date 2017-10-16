@@ -14,13 +14,8 @@ public class PowerUp : MonoBehaviour {
     [SerializeField]
     private float randomlyMoveSpeedX;
 
-    private GameObject goPlayer;
-    private PlayerController scrPlayer;
-
     private void Start()
     {
-        goPlayer = GameObject.FindGameObjectWithTag("Player");
-        scrPlayer = (PlayerController)goPlayer.GetComponent(typeof(PlayerController));
         randomlyMoveSpeedX = Random.Range(-2.0f, 2.0f);
     }
 
@@ -37,23 +32,17 @@ public class PowerUp : MonoBehaviour {
             switch(i)
             {
                 case 0:
-                    for (int s = 0; s < scrPlayer.shields.Length; s++)
-                    {
-                        if (scrPlayer.shields[i].activeInHierarchy == false)
-                        {
-                            scrPlayer.shields[i].SetActive(true);
-                        }
-                    }
+                    StartCoroutine(GM.Instance.AddShield());
                     break;
                 case 1:
-                    if (scrPlayer.Boost == true)
-                    {
-                        Debug.Log("lol");
+                    if (GM.Instance.Boost){
+                        StartCoroutine(GM.Instance.AddShield());
+                    }else{
+                        GM.Instance.Boost = true;
                     }
-                    scrPlayer.Boost = true;
                     break;
                 case 2:
-                    Debug.Log("Health");
+                    GM.Instance.addLife();
                     break;
             }
             Destroy(gameObject);
