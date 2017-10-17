@@ -8,6 +8,8 @@ public class MoveAsteroids : MonoBehaviour {
     private float rotateSpeed;
     [SerializeField]
     private GameObject asteroidImpacts;
+    GM gm;
+
 
     private void Start()
     {
@@ -22,6 +24,11 @@ public class MoveAsteroids : MonoBehaviour {
         rotateSpeed = random.ChoseByRandom();
 
         moveSpeed = Random.Range(1.0f, 3.0f);
+        gm = GM.Instance;
+        if (gm == null)
+        {
+            Debug.LogError("GameManager not found!");
+        }
     }
 
     void Update () {
@@ -33,12 +40,14 @@ public class MoveAsteroids : MonoBehaviour {
     {
         if (collision.CompareTag("Player"))
         {
-            GM.Instance.loseLife();
+            gm.loseLife();
+            AudioManager.Instance.PlaySound(5);
             Destroy(gameObject);
         }
         if (collision.CompareTag("Shield"))
         {
             collision.gameObject.SetActive(false);
+            AudioManager.Instance.PlaySound(5);
             Destroy(gameObject);
         }
         Instantiate(asteroidImpacts, transform.position, transform.rotation);

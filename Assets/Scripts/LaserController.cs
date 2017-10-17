@@ -10,6 +10,16 @@ public class LaserController : MonoBehaviour {
     private GameObject laserImpacts;
     [SerializeField]
     private GameObject explosion;
+    GM gm;
+
+    private void Start()
+    {
+        gm = GM.Instance;
+        if (gm == null)
+        {
+            Debug.LogError("GameManager not found!");
+        }
+    }
 
     void Update ()
     {
@@ -22,15 +32,16 @@ public class LaserController : MonoBehaviour {
         
         if (other.CompareTag("Enemy"))
         {
+            AudioManager.Instance.PlaySound(5);
             Instantiate(explosion, transform.position, transform.rotation);
-            GM.Instance.SpawnPowerUp(transform.position);
-            GM.Instance.AddScore(other.GetComponent<EnemyShoot>().Value);
+            gm.SpawnPowerUp(transform.position);
+            gm.AddScore(other.GetComponent<EnemyShoot>().Value);
             Destroy(other.gameObject);
         } 
 
         if (other.CompareTag("Player"))
         {
-            GM.Instance.loseLife();
+            gm.loseLife();
         }
 
         if (other.CompareTag("Shield"))

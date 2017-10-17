@@ -40,6 +40,7 @@ public class GM : SingletoneAsComponent<GM>
     [SerializeField]
     private TextMeshProUGUI scoreText;
     private int currentScore;
+    AudioManager audioManager;
 
     private void Awake()
     {
@@ -47,6 +48,17 @@ public class GM : SingletoneAsComponent<GM>
         goPlayer = GameObject.FindGameObjectWithTag("Player");
         playerLives = symbolicLives.Length;
         updateScoreCounter();
+        Time.timeScale = 1;
+    }
+
+    private void Start()
+    {
+        audioManager = AudioManager.Instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found!");
+        }
+        audioManager.PlaySound(1);
     }
 
     void Update () {
@@ -145,6 +157,7 @@ public class GM : SingletoneAsComponent<GM>
 
     private void GameOver()
     {
+        AudioManager.Instance.PlaySound(5);
         goPlayer.SetActive(false);
         Time.timeScale = 0;
         gameOver.SetActive(true);

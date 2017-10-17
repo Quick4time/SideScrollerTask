@@ -14,9 +14,22 @@ public class PowerUp : MonoBehaviour {
     [SerializeField]
     private float randomlyMoveSpeedX;
 
+    GM gm;
+    AudioManager audioManager;
+
     private void Start()
     {
         randomlyMoveSpeedX = Random.Range(-2.0f, 2.0f);
+        gm = GM.Instance;
+        if (gm == null)
+        {
+            Debug.LogError("GameManager not found!");
+        }
+        audioManager = AudioManager.Instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found!");
+        }
     }
 
     private void Update()
@@ -28,21 +41,22 @@ public class PowerUp : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
+            audioManager.PlaySound(3);
             int i = (int)type;
             switch(i)
             {
                 case 0:
-                    StartCoroutine(GM.Instance.AddShield());
+                    StartCoroutine(gm.AddShield());
                     break;
                 case 1:
-                    if (GM.Instance.Boost){
-                        StartCoroutine(GM.Instance.AddShield());
+                    if (gm.Boost){
+                        StartCoroutine(gm.AddShield());
                     }else{
-                        GM.Instance.Boost = true;
+                        gm.Boost = true;
                     }
                     break;
                 case 2:
-                    GM.Instance.addLife();
+                    gm.addLife();
                     break;
             }
             Destroy(gameObject);

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4749472445410728}
   m_Layer: 0
   m_Name: EnergyShield
-  m_TagString: Shield
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,8 +617,7 @@ MonoBehaviour:
   - {fileID: 4505331446066994}
   - {fileID: 4734441103260506}
   - {fileID: 4713348529478736}
-  fireRate: 4
-  Boost: 0
+  fireRate: 3.5
 --- !u!212 &212021534886941700
 SpriteRenderer:
   m_ObjectHideFlags: 1

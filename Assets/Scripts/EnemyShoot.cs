@@ -16,13 +16,24 @@ public class EnemyShoot : MonoBehaviour {
     [SerializeField]
     private float shotDelay;
     private float shotCounter = 1.0f;
-	
-	void Update () {
+    AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = AudioManager.Instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found!");
+        }
+    }
+
+    void Update () {
         shotCounter -= Time.deltaTime;
         if (shotCounter <= 0)
         {
             for (int i = 0; i < laserPoint.Length; i++)
             {
+                audioManager.PlaySound(7);
                 Instantiate(laser, laserPoint[i].position, laserPoint[i].rotation);
             }
             shotCounter = shotDelay;
