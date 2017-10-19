@@ -40,7 +40,7 @@ public class PopupController : MonoBehaviour {
             activePopup = !activePopup;
             if (activePopup)
             {
-                OnPopup();
+                OnPopup(); 
             }
             else
             {
@@ -57,12 +57,14 @@ public class PopupController : MonoBehaviour {
 
     public void OnPopup()
     {
+        sceneController.isShowing = true;
         popupMenu.SetActive(true);
         Time.timeScale = 0;
         activePopup = true;
     }
     public void OffPopup()
     {
+        sceneController.isShowing = false;
         popupMenu.SetActive(false);
         Time.timeScale = 1;
         activePopup = false;

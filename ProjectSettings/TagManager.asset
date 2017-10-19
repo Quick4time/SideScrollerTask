@@ -7,6 +7,9 @@ TagManager:
   - Asteroids
   - Enemy
   - Shield
+  - Boss
+  - BossShield
+  - LaserRay
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - 
   - Background
   - Enemy
-  - 
+  - Boss
   - 
   - 
   - 

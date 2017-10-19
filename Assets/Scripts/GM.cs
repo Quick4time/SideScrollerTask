@@ -31,16 +31,28 @@ public class GM : SingletoneAsComponent<GM>
     public bool Boost = false;
 
     [SerializeField]
+    private GameObject goBoss;
+    [SerializeField]
+    private Transform spawnPointBoss;
+
+    [SerializeField]
     private int playerLives;
     [SerializeField]
     private GameObject[] symbolicLives;
     private GameObject goPlayer;
+
     [SerializeField]
     private GameObject gameOver;
     [SerializeField]
+    private GameObject finTheGame;
+    [SerializeField]
+    private TextMeshProUGUI finScore;
+    [SerializeField]
     private TextMeshProUGUI scoreText;
     private int currentScore;
+
     AudioManager audioManager;
+    SceneController sceneController;
 
     private void Awake()
     {
@@ -58,11 +70,18 @@ public class GM : SingletoneAsComponent<GM>
         {
             Debug.LogError("AudioManager not found!");
         }
+        sceneController = SceneController.Instance;
+        if (sceneController == null)
+        {
+            Debug.LogError("SceneController not found!");
+        }
         audioManager.PlaySound(1);
+        sceneController.isShowing = false;
     }
 
-    void Update () {
-		if (spawningWaves)
+    void Update()
+    {
+        if (spawningWaves)
         {
             waveDelays[waveTracker] -= Time.deltaTime;
 
@@ -75,12 +94,20 @@ public class GM : SingletoneAsComponent<GM>
                 if (waveTracker >= waveDelays.Length)
                 {
                     spawningWaves = false;
+                    Instantiate(goBoss, spawnPointBoss.position, Quaternion.identity);
+                    audioManager.StopSound(1);
+                    audioManager.PlaySound(2);
                 }
             }
         }
-	}
 
-    public void AddScore (int scoreToAdd)
+        if (!sceneController.isShowing)
+        {
+            Cursor.visible = false;
+        }
+    }
+
+    public void AddScore(int scoreToAdd)
     {
         currentScore += scoreToAdd;
         updateScoreCounter();
@@ -144,7 +171,7 @@ public class GM : SingletoneAsComponent<GM>
     public IEnumerator AddShield()
     {
         int index = 0;
-        while(index <= Shields.Length)
+        while (index <= Shields.Length)
         {
             for (int i = 0; i < Shields.Length; i++)
             {
@@ -157,9 +184,18 @@ public class GM : SingletoneAsComponent<GM>
 
     private void GameOver()
     {
+        sceneController.isShowing = true;
         AudioManager.Instance.PlaySound(5);
         goPlayer.SetActive(false);
         Time.timeScale = 0;
         gameOver.SetActive(true);
+    }
+
+    private void FinishGame()
+    {
+        sceneController.isShowing = true;
+        Time.timeScale = 0;
+        finTheGame.SetActive(true);
+        finScore.text = string.Format("You're Final Score: {0}", currentScore);
     }
 }

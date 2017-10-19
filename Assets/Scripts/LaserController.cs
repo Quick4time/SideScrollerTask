@@ -27,9 +27,6 @@ public class LaserController : MonoBehaviour {
 	}
     private void OnTriggerEnter2D(Collider2D other)
     {
-            Instantiate(laserImpacts, transform.position, transform.rotation);
-            Destroy(gameObject);
-        
         if (other.CompareTag("Enemy"))
         {
             AudioManager.Instance.PlaySound(5);
@@ -48,6 +45,16 @@ public class LaserController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
         }
+        if (other.CompareTag("Boss"))
+        {
+            GameObject.FindGameObjectWithTag("Boss").GetComponent<BossController>().loseBossLife();
+        }
+        if (other.CompareTag("BossShield"))
+        {
+            GameObject.FindGameObjectWithTag("Boss").GetComponent<BossController>().loseDurabilityShiel();
+        }
+        Instantiate(laserImpacts, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
     private void OnBecameInvisible()
     {
