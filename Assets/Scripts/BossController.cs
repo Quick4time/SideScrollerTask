@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PhaseBoss { Start, Move, PhaseOne, PhaseTwo, PhaseThree }
+public enum PhaseBoss { Start, Move, PhaseOne, PhaseTwo }
 
 public class BossController : MonoBehaviour
 {
@@ -54,6 +54,8 @@ public class BossController : MonoBehaviour
                     phaseBoss = PhaseBoss.Move;
                 break;
             case 1:
+                AudioManager.Instance.StopSound(1);
+                AudioManager.Instance.PlaySound(2);
                 if (transform.position.y > yTarget)
                     transform.position += new Vector3(0.0f, -moveSpeedY) * Time.deltaTime;
                 else
@@ -94,6 +96,7 @@ public class BossController : MonoBehaviour
                 if (durableShield <= 0)
                 {
                     Destroy(Shields);
+                    GM.Instance.AddScore(200);
                     phaseBoss = PhaseBoss.PhaseTwo;
                 }
                 break;
@@ -120,11 +123,13 @@ public class BossController : MonoBehaviour
                     }
                     shotCounter = shotDelay;
                 }
-                if (bossLife <= 45)
-                    phaseBoss = PhaseBoss.PhaseThree;
-                break;
-            case 4:
-                Debug.Log("Phase Three");
+                if (bossLife <= 0)
+                {
+                    GM.Instance.AddScore(350);
+                    AudioManager.Instance.PlaySound(5);
+                    gameObject.SetActive(false);
+                    GM.Instance.FinishGame();
+                }
                 break;
         }
     }
@@ -141,7 +146,7 @@ public class BossController : MonoBehaviour
 
     public bool loseBossLife()
     {
-        durableShield--;
+        bossLife--;
         if (durableShield > 0)
             return false;
 

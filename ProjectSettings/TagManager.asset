@@ -9,7 +9,6 @@ TagManager:
   - Shield
   - Boss
   - BossShield
-  - LaserRay
   layers:
   - Default
   - TransparentFX

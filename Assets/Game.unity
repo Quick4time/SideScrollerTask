@@ -1403,6 +1403,13 @@ MonoBehaviour:
   - {fileID: 1938202586131514, guid: af3b8285cbef41540acb2977e129257a, type: 2}
   waveDelays:
   - 3
+  - 5
+  - 5
+  - 4
+  - 4
+  - 4
+  - 3
+  - 3
   spawningWaves: 1
   waveTracker: 0
   powerUp:
@@ -1411,7 +1418,7 @@ MonoBehaviour:
   - {fileID: 1405147271945772, guid: ec00480aa392ab7498c099579f9f20d8, type: 2}
   Shields: []
   Boost: 0
-  goBoss: {fileID: 1977599290114380, guid: ef132826c19aed944a97b6873c5c5bf3, type: 2}
+  goBoss: {fileID: 1027542817485144, guid: 20fd8097852984149a81d1e2e6b16ebc, type: 2}
   spawnPointBoss: {fileID: 760737458}
   playerLives: 0
   symbolicLives:

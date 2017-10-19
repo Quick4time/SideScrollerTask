@@ -95,8 +95,6 @@ public class GM : SingletoneAsComponent<GM>
                 {
                     spawningWaves = false;
                     Instantiate(goBoss, spawnPointBoss.position, Quaternion.identity);
-                    audioManager.StopSound(1);
-                    audioManager.PlaySound(2);
                 }
             }
         }
@@ -161,7 +159,7 @@ public class GM : SingletoneAsComponent<GM>
 
     public void SpawnPowerUp(Vector3 spawnPos)
     {
-        if (Random.Range(0, 10) == 1)
+        if (Random.Range(0, 8) == 1)
         {
             GameObject toInstantiate = powerUp[Random.Range(0, powerUp.Length)];
             Instantiate(toInstantiate, spawnPos, Quaternion.identity);
@@ -191,7 +189,7 @@ public class GM : SingletoneAsComponent<GM>
         gameOver.SetActive(true);
     }
 
-    private void FinishGame()
+    public void FinishGame()
     {
         sceneController.isShowing = true;
         Time.timeScale = 0;
