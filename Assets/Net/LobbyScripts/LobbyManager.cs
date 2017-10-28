@@ -41,14 +41,6 @@ public class LobbyManager : NetworkLobbyManager
     [HideInInspector]
     public int playerNumber = 0;
 
-    // used to disconnect a client properly when exiting the matchmaker
-    //[HideInInspector]
-    //public bool isMatchmaking = false;
-
-    //protected bool disconnectServer = false;
-
-    protected ulong currentMatchID;
-
     protected LobbyHook lobbyHooks;
 
     void Start()
@@ -72,6 +64,7 @@ public class LobbyManager : NetworkLobbyManager
             if (topPanel.isInGame)
             {
                 ChangeTo(lobbyPanel);
+
                 if (conn.playerControllers[0].unetView.isClient)
                 {
                     backDelegate = StopHostClbk;
@@ -91,7 +84,10 @@ public class LobbyManager : NetworkLobbyManager
         else
         {
             ChangeTo(null);
+
             Destroy(GameObject.Find("MainMenuUI(Clone)"));
+
+            //backDelegate = StopGameClbk;
             topPanel.isInGame = true;
             topPanel.ToggleVisibility(false);
         }
@@ -119,7 +115,6 @@ public class LobbyManager : NetworkLobbyManager
         {
             backButton.gameObject.SetActive(false);
             SetServerInfo("Offline", "None");
-            //isMatchmaking = false; // попробовать удалить.
         }
     }
 
@@ -135,7 +130,8 @@ public class LobbyManager : NetworkLobbyManager
         hostInfo.text = host;
     }
 
-    public Action backDelegate; // or public delegate void BackButtonDelegate(); public BackButtonDelegate backDelegate;
+
+    public Action backDelegate;
     public void GoBackButton()
     {
         backDelegate();
@@ -161,11 +157,6 @@ public class LobbyManager : NetworkLobbyManager
 
     public void StopHostClbk()
     {
-        //if (isMatchmaking)
-        //{
-        //    matchMaker.DestroyMatch((NetworkID)currentMatchID, 0, OnDestroyMatch);
-        //    disconnectServer = true;
-        //}
         StopHost();
         ChangeTo(mainMenuPanel);
     }
@@ -173,10 +164,6 @@ public class LobbyManager : NetworkLobbyManager
     public void StopClientClbk()
     {
         StopClient();
-        //if (isMatchmaking)
-        //{
-        //    StopMatchMaker();
-        //}
         ChangeTo(mainMenuPanel);
     }
 
@@ -186,7 +173,7 @@ public class LobbyManager : NetworkLobbyManager
         ChangeTo(mainMenuPanel);
     }
 
-    class KickMsg : MessageBase { } // Может тоже закомментировать
+    class KickMsg : MessageBase { }
     public void KickPlayer(NetworkConnection conn)
     {
         conn.Send(MsgKicked, new KickMsg());
@@ -198,7 +185,7 @@ public class LobbyManager : NetworkLobbyManager
         netMsg.conn.Disconnect();
     }
 
-    //================
+    //===================
 
     public override void OnStartHost()
     {
@@ -209,21 +196,6 @@ public class LobbyManager : NetworkLobbyManager
         SetServerInfo("Hosting", networkAddress);
     }
 
-    //public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
-    //{
-    //    base.OnMatchCreate(success, extendedInfo, matchInfo);
-    //    currentMatchID = (System.UInt64)matchInfo.networkId;
-    //}
-    //public override void OnDestroyMatch(bool success, string extendedInfo)
-    //{
-    //    base.OnDestroyMatch(success, extendedInfo);
-    //    if (_disconnectServer)
-    //    {
-    //        StopMatchMaker();
-    //        StopHost();
-    //    }
-    //}
-
     //allow to handle the (+) button to add/remove player
     public void OnPlayersNumberModified(int count)
     {
@@ -231,9 +203,7 @@ public class LobbyManager : NetworkLobbyManager
 
         int localPlayerCount = 0;
         foreach (UnityEngine.Networking.PlayerController p in ClientScene.localPlayers)
-        {
             localPlayerCount += (p == null || p.playerControllerId == -1) ? 0 : 1;
-        }
 
         addPlayerButton.SetActive(localPlayerCount < maxPlayersPerConnection && playerNumber < maxPlayers);
     }
@@ -242,13 +212,13 @@ public class LobbyManager : NetworkLobbyManager
 
     //we want to disable the button JOIN if we don't have enough player
     //But OnLobbyClientConnect isn't called on hosting player. So we override the lobbyPlayer creation
-
-    public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
+    public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
     {
         GameObject obj = Instantiate(lobbyPlayerPrefab.gameObject) as GameObject;
 
         LobbyPlayer newPlayer = obj.GetComponent<LobbyPlayer>();
         newPlayer.ToggleJoinButton(numPlayers + 1 >= minPlayers);
+
 
         for (int i = 0; i < lobbySlots.Length; ++i)
         {
@@ -260,6 +230,7 @@ public class LobbyManager : NetworkLobbyManager
                 p.ToggleJoinButton(numPlayers + 1 >= minPlayers);
             }
         }
+
         return obj;
     }
 
@@ -289,12 +260,14 @@ public class LobbyManager : NetworkLobbyManager
                 p.ToggleJoinButton(numPlayers >= minPlayers);
             }
         }
+
     }
 
     public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
     {
         //This hook allows you to apply state data from the lobby-player to the game-player
         //just subclass "LobbyHook" and add it to the lobby object.
+
         if (lobbyHooks)
             lobbyHooks.OnLobbyServerSceneLoadedForPlayer(this, lobbyPlayer, gamePlayer);
 
@@ -306,10 +279,10 @@ public class LobbyManager : NetworkLobbyManager
     public override void OnLobbyServerPlayersReady()
     {
         bool allready = true;
-        for (int i = 0; i < lobbySlots.Length; i++)
+        for (int i = 0; i < lobbySlots.Length; ++i)
         {
             if (lobbySlots[i] != null)
-                allready &= lobbySlots[i].readyToBegin; // т.е allready и readyToBegin бедут равны true если allready true
+                allready &= lobbySlots[i].readyToBegin;
         }
 
         if (allready)
@@ -332,7 +305,7 @@ public class LobbyManager : NetworkLobbyManager
             {//to avoid flooding the network of message, we only send a notice to client when the number of plain seconds change.
                 floorTime = newFloorTime;
 
-                for (int i = 0; i < lobbySlots.Length; i++)
+                for (int i = 0; i < lobbySlots.Length; ++i)
                 {
                     if (lobbySlots[i] != null)
                     {//there is maxPlayer slots, so some could be == null, need to test it before accessing!
@@ -342,7 +315,7 @@ public class LobbyManager : NetworkLobbyManager
             }
         }
 
-        for (int i = 0; i < lobbySlots.Length; i++)
+        for (int i = 0; i < lobbySlots.Length; ++i)
         {
             if (lobbySlots[i] != null)
             {
@@ -371,6 +344,7 @@ public class LobbyManager : NetworkLobbyManager
         }
     }
 
+
     public override void OnClientDisconnect(NetworkConnection conn)
     {
         base.OnClientDisconnect(conn);
@@ -383,3 +357,4 @@ public class LobbyManager : NetworkLobbyManager
         infoPanel.Display("Cient error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
     }
 }
+

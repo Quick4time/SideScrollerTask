@@ -346,7 +346,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082138467580000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.31870055, y: -6.293971, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4749472445410728}
@@ -730,15 +730,15 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.083333336
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 0
   m_RotationSyncCompression: 0
-  m_SyncSpin: 0
+  m_SyncSpin: 1
   m_MovementTheshold: 0.001
   m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
+  m_SnapThreshold: 30
+  m_InterpolateRotation: 20
   m_InterpolateMovement: 1
 --- !u!114 &114753776432787692
 MonoBehaviour:
@@ -752,6 +752,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  fireRate: 5
+  lasers:
+  - {fileID: 1506305851895870, guid: 617693064fba8b343b80e7b069c4db5b, type: 2}
+  - {fileID: 1806009322220670, guid: 883b8057ac394c04bac0af94cb549ceb, type: 2}
+  lasersPoint:
+  - {fileID: 4505331446066994}
+  - {fileID: 4734441103260506}
+  - {fileID: 4713348529478736}
   lifeCount: 3
 --- !u!114 &114928172893498784
 MonoBehaviour:

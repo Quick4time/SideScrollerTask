@@ -11,6 +11,13 @@ public class PlayerControllerNet : NetworkBehaviour {
     private Transform ThisTransform = null;
     private float limitMovementShipX = 3.4f;
     private float limitMovementShipY = 4.4f;
+    [SerializeField]
+    private float fireRate = 5;
+    private float timeToFire = 0;
+    [SerializeField]
+    private GameObject[] lasers;
+    [SerializeField]
+    public Transform[] lasersPoint;
 
     protected Collider2D col;
 
@@ -62,6 +69,12 @@ public class PlayerControllerNet : NetworkBehaviour {
 
         Horz = Input.GetAxisRaw("Horizontal");
         Vert = Input.GetAxisRaw("Vertical");  
+
+        if (Time.time > timeToFire)
+        {
+            timeToFire = Time.time + 1 / fireRate;
+            CmdFire();
+        }
     }
 
     [ClientCallback]
@@ -80,5 +93,25 @@ public class PlayerControllerNet : NetworkBehaviour {
     private void OnDestroy()
     {
         GMNetwork.sShips.Remove(this);
+    }
+
+    private void CreateLaser()
+    {
+        Instantiate(lasers[0], lasersPoint[0].position, lasersPoint[0].rotation);
+    }
+
+    [Command]
+    public void CmdFire()
+    {
+        if (!isClient)
+            CreateLaser();
+
+        RpcFire();
+    }
+
+    [ClientRpc]
+    public void RpcFire()
+    {
+        CreateLaser();
     }
 }
