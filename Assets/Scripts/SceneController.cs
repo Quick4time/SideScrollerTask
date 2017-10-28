@@ -36,6 +36,11 @@ public class SceneController : SingletoneAsComponent<SceneController> {
         SceneManager.LoadScene(1);
     }
 
+    public void MultiplayerGame()
+    {
+        SceneManager.LoadScene(3);
+    }
+
     public void ExitGame()
     {
         Application.Quit();
