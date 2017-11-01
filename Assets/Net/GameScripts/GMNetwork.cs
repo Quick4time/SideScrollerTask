@@ -3,10 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GMNetwork : NetworkBehaviour {
 
+sealed class GMNetwork : NetworkBehaviour
+{
     static public List<PlayerControllerNet> sShips = new List<PlayerControllerNet>();
     static public GMNetwork sInstance = null;
+
+    [SerializeField]
+    private Transform waveSpawnPoint;
+    [SerializeField]
+    private GameObject[] enemyPrefabs;
+    private GameObject[] enemyForSpawn;
+
+    [SerializeField]
+    private float[] waveDelays;
+    [SerializeField]
+    private bool spawningWaves;
+    [SerializeField]
+    private int waveTracker;
+    private int numGoForWave;
 
 
     private void Awake()
@@ -30,12 +45,59 @@ public class GMNetwork : NetworkBehaviour {
         {
             StartCoroutine(ReturnToLobby());
         }
+
+        if (spawningWaves)
+        {
+            waveDelays[waveTracker] -= Time.deltaTime;
+
+            if (waveDelays[waveTracker] < 0)
+            {
+                Instantiate(Waves(1), waveSpawnPoint.position, waveSpawnPoint.rotation);
+
+                waveTracker++;
+            }
+        }
+
+    }
+
+    private GameObject Waves(int numWaves)
+    {
+        GameObject GoHolder = new GameObject("Waves" + numWaves);
+        GameObject[] curGo = new GameObject[numGoForWave];
+        GameObject instance;
+        switch (numWaves)
+        {
+            case 1:
+                numGoForWave = 4;
+                for (int i = 0; i < 4; i++)
+                {
+                    curGo[i] = enemyPrefabs[i];
+                    instance = Instantiate(curGo[i]);
+                    instance.transform.SetParent(GoHolder.transform);
+
+                    NetworkServer.Spawn(GoHolder);
+                }
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+        }
+        return GoHolder;
     }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
+
+        foreach (GameObject obj in enemyPrefabs)
+        {
+            ClientScene.RegisterPrefab(obj);
+        }
     }
+
 
     IEnumerator ReturnToLobby()
     {

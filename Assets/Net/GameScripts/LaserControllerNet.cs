@@ -7,6 +7,8 @@ public class LaserControllerNet : MonoBehaviour {
     [SerializeField]
     private float laserSpeed;
 
+    public PlayerControllerNet owner;
+
     void FixedUpdate () {
         transform.position = new Vector3(transform.position.x, transform.position.y + (laserSpeed * Time.deltaTime));
     }

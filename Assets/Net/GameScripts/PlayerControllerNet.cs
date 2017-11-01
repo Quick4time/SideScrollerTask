@@ -11,6 +11,7 @@ public class PlayerControllerNet : NetworkBehaviour {
     private Transform ThisTransform = null;
     private float limitMovementShipX = 3.4f;
     private float limitMovementShipY = 4.4f;
+
     [SerializeField]
     private float fireRate = 5;
     private float timeToFire = 0;
@@ -27,6 +28,11 @@ public class PlayerControllerNet : NetworkBehaviour {
     [SyncVar(hook = "OnLifeChanged")]
     public int lifeCount;
 
+    [SerializeField]
+    private SpriteRenderer[] sr;
+    [SyncVar]
+    public Color colorIdentity; 
+
     void Awake()
     {
         GMNetwork.sShips.Add(this);
@@ -36,6 +42,11 @@ public class PlayerControllerNet : NetworkBehaviour {
     {
         ThisTransform = GetComponent<Transform>();
         col = GetComponent<Collider2D>();
+
+        foreach (SpriteRenderer sp in sr)
+        {
+            sp.color = colorIdentity;
+        }
         // We don't want to handle collision on client, so disable collider there
         col.enabled = isServer;
 
@@ -97,7 +108,9 @@ public class PlayerControllerNet : NetworkBehaviour {
 
     private void CreateLaser()
     {
-        Instantiate(lasers[0], lasersPoint[0].position, lasersPoint[0].rotation);
+        GameObject laser = Instantiate(lasers[0], lasersPoint[0].position, Quaternion.identity) as GameObject;
+        LaserControllerNet laserScript = laser.GetComponent<LaserControllerNet>();
+        laserScript.owner = this;
     }
 
     [Command]

@@ -1261,12 +1261,12 @@ MonoBehaviour:
   isNetworkActive: 0
   matchMaker: {fileID: 0}
   m_ShowLobbyGUI: 0
-  m_MaxPlayers: 4
+  m_MaxPlayers: 2
   m_MaxPlayersPerConnection: 2
   m_MinPlayers: 2
   m_LobbyPlayerPrefab: {fileID: 114705425276630202, guid: 4948fbeb54f9dff4fa4fd4f64bad72e2,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1219499473489032, guid: fc670b39002bfb64c8fbc98f8221e6f3,
+  m_GamePlayerPrefab: {fileID: 1082138467580000, guid: 6e6430a2605b7f142a7124bd506ad6f7,
     type: 2}
   m_LobbyScene: LobbyMenu
   m_PlayScene: OnlineGame

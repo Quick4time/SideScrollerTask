@@ -13,7 +13,7 @@ public class NetworkLobbyHook : LobbyHook
         PlayerControllerNet spaceship = gamePlayer.GetComponent<PlayerControllerNet>();
 
         //spaceship.name = lobby.name;
-        //spaceship.color = lobby.playerColor;
+        spaceship.colorIdentity = lobby.playerColor;
         //spaceship.score = 0;
         spaceship.lifeCount = 3;
     }
