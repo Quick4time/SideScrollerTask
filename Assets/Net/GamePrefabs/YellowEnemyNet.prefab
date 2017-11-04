@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 50021984184378118}
   - component: {fileID: 114309788244633834}
   - component: {fileID: 114002502940081694}
-  - component: {fileID: 114543328778262580}
+  - component: {fileID: 114634300997703110}
   m_Layer: 9
   m_Name: YellowEnemyNet
   m_TagString: Enemy
@@ -201,7 +201,7 @@ MonoBehaviour:
     i15: 6
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &114543328778262580
+--- !u!114 &114634300997703110
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -209,9 +209,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1529384967107384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405e2e47274d9a5488bcf342b2500356, type: 3}
+  m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0, z: 0}
   rotateSpeed: 0
   moveSpeedX: 0
   moveSpeedY: 0

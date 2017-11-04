@@ -55,7 +55,7 @@ sealed class GMNetwork : NetworkBehaviour
                 SpawnWaves(2);
                 waveTracker++;
             }
-            else
+            else if (waveTracker >= waveDelays.Length)
             {
                 spawningWaves = false;
             }
@@ -76,7 +76,7 @@ sealed class GMNetwork : NetworkBehaviour
     private void SpawnWaves(int numWaves)
     {
         GameObject[] selectorArr;
-        GameObject go;
+        GameObject go = null;
         switch (numWaves)
         {
             case 1:
@@ -106,18 +106,14 @@ sealed class GMNetwork : NetworkBehaviour
                 for (int i = 0; i < 8; i++)
                 {
                     if (i < 4)
-                    {
                         go = Instantiate(enemyPrefabs[6], waveSpawnPoint.position, Quaternion.identity);
-                    }
-                    else
-                    {
+                    else if (i >= 4)
                         go = Instantiate(enemyPrefabs[4], waveSpawnPoint.position, Quaternion.identity);
-                    }
+
                     selectorArr[i] = go;
                     NetworkServer.Spawn(selectorArr[i]);
                     getMS[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
                 }
-
                 getMS[0].SetStartPosition(new Vector3(-3.0f, 6.0f, 0.0f));
                 getMS[0].SetEnemyMovement(0.0f, 2.0f, 2.0f, 2.0f, 3.0f, true, 2);
                 getMS[1].SetStartPosition(new Vector3(-1.0f, 6.6f, 0.0f));
