@@ -52,7 +52,7 @@ sealed class GMNetwork : NetworkBehaviour
 
             if (waveDelays[waveTracker] < 0)
             {
-                SpawnWaves(1);
+                SpawnWaves(2);
                 waveTracker++;
             }
             else
@@ -76,6 +76,7 @@ sealed class GMNetwork : NetworkBehaviour
     private void SpawnWaves(int numWaves)
     {
         GameObject[] selectorArr;
+        GameObject go;
         switch (numWaves)
         {
             case 1:
@@ -83,7 +84,7 @@ sealed class GMNetwork : NetworkBehaviour
                 getMS = new MoveEnemyScript[selectorArr.Length];
                 for (int i = 0; i < 5; i++)
                 {
-                    GameObject go = Instantiate(enemyPrefabs[4], waveSpawnPoint.position, Quaternion.identity);
+                    go = Instantiate(enemyPrefabs[4], waveSpawnPoint.position, Quaternion.identity);
                     selectorArr[i] = go;
                     NetworkServer.Spawn(selectorArr[i]);
                     getMS[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
@@ -100,7 +101,39 @@ sealed class GMNetwork : NetworkBehaviour
                 getMS[4].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, 3.0f, true, 2);
                 break;
             case 2:
+                selectorArr = new GameObject[8];
+                getMS = new MoveEnemyScript[selectorArr.Length];
+                for (int i = 0; i < 8; i++)
+                {
+                    if (i < 4)
+                    {
+                        go = Instantiate(enemyPrefabs[6], waveSpawnPoint.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        go = Instantiate(enemyPrefabs[4], waveSpawnPoint.position, Quaternion.identity);
+                    }
+                    selectorArr[i] = go;
+                    NetworkServer.Spawn(selectorArr[i]);
+                    getMS[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
+                }
 
+                getMS[0].SetStartPosition(new Vector3(-3.0f, 6.0f, 0.0f));
+                getMS[0].SetEnemyMovement(0.0f, 2.0f, 2.0f, 2.0f, 3.0f, true, 2);
+                getMS[1].SetStartPosition(new Vector3(-1.0f, 6.6f, 0.0f));
+                getMS[1].SetEnemyMovement(0.0f, 2.0f, 2.0f, 3.0f, 1.0f, true, 2);
+                getMS[2].SetStartPosition(new Vector3(3.0f, 7.6f, 0.0f));
+                getMS[2].SetEnemyMovement(0.0f, 2.0f, 2.0f, 4.0f, -3.0f, false, 2);
+                getMS[3].SetStartPosition(new Vector3(-1.0f, 8.6f, 0.0f));
+                getMS[3].SetEnemyMovement(0.0f, 2.0f, 2.0f, 5.0f, 1.0f, true, 2);
+                getMS[4].SetStartPosition(new Vector3(3.0f, 6.0f, 0.0f));
+                getMS[4].SetEnemyMovement(0.0f, 2.0f, 2.0f, 2.0f, -3.0f, false, 2);
+                getMS[5].SetStartPosition(new Vector3(1.0f, 6.6f, 0.0f));
+                getMS[5].SetEnemyMovement(0.0f, 2.0f, 2.0f, 3.0f, -1.0f, false, 2);
+                getMS[6].SetStartPosition(new Vector3(-3.0f, 7.6f, 0.0f));
+                getMS[6].SetEnemyMovement(0.0f, 2.0f, 2.0f, 4.0f, 3.0f, true, 2);
+                getMS[7].SetStartPosition(new Vector3(1.0f, 8.6f, 0.0f));
+                getMS[7].SetEnemyMovement(0.0f, 2.0f, 2.0f, 5.0f, -1.0f, false, 2);
                 break;
             case 3:
 
