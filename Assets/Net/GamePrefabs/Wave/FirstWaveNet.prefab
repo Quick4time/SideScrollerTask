@@ -1058,7 +1058,7 @@ MonoBehaviour:
     i14: 191
     i15: 128
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114067637972342628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1090,7 +1090,7 @@ MonoBehaviour:
     i14: 191
     i15: 128
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114194384968297620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1123,6 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2
   moveSpeedY: 2
@@ -1182,7 +1183,7 @@ MonoBehaviour:
     i14: 191
     i15: 128
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114345650435147978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,7 +1215,7 @@ MonoBehaviour:
     i14: 191
     i15: 128
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114354417129312210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1289,6 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2
   moveSpeedY: 2
@@ -1307,6 +1309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2
   moveSpeedY: 2
@@ -1325,6 +1328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2
   moveSpeedY: 2
@@ -1364,6 +1368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2
   moveSpeedY: 2
@@ -1402,7 +1407,7 @@ MonoBehaviour:
     i14: 191
     i15: 128
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114683952590396600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1455,7 +1460,7 @@ MonoBehaviour:
     i14: 191
     i15: 128
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114763089323100698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1467,6 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2
   moveSpeedY: 2
@@ -1485,6 +1491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2
   moveSpeedY: 2
@@ -1524,6 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2
   moveSpeedY: 2
@@ -1562,7 +1570,7 @@ MonoBehaviour:
     i14: 191
     i15: 128
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114978801592138454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1594,7 +1602,7 @@ MonoBehaviour:
     i14: 191
     i15: 128
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!212 &212160122748959378
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -615,7 +615,7 @@ MonoBehaviour:
     i14: 69
     i15: 66
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114079360426463954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -627,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 3.5
   moveSpeedY: 1.5
@@ -665,7 +666,7 @@ MonoBehaviour:
     i14: 69
     i15: 66
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114239178250883296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -718,7 +719,7 @@ MonoBehaviour:
     i14: 69
     i15: 66
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114314972973333590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -792,7 +793,7 @@ MonoBehaviour:
     i14: 69
     i15: 66
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114483314025959236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -804,6 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 3.5
   moveSpeedY: 1.5
@@ -822,6 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 3.5
   moveSpeedY: 1.5
@@ -861,6 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 3.5
   moveSpeedY: 1.5
@@ -920,7 +924,7 @@ MonoBehaviour:
     i14: 69
     i15: 66
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114967684278326982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -932,6 +936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee64e44df2ac16141adf2ac335678d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {fileID: 0}
   rotateSpeed: 0
   moveSpeedX: 2.5
   moveSpeedY: 1.5

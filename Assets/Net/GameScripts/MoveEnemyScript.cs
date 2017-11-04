@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class MoveEnemyScript : NetworkBehaviour {
 
     [SerializeField]
-    private Transform startPos;
+    private Vector3 startPos;
     [SerializeField]
     private float rotateSpeed;
     [SerializeField]
@@ -26,7 +26,7 @@ public class MoveEnemyScript : NetworkBehaviour {
 
     private void Start()
     {
-        SetStartMovement(startPos);
+        SetStartPosition(startPos);
     }
 
     [ServerCallback]
@@ -35,10 +35,10 @@ public class MoveEnemyScript : NetworkBehaviour {
         SetEnemyMovement(rotateSpeed, moveSpeedX, moveSpeedY, yTarget, xTarget, moveRight, moveType);
     }
 
-    public void SetStartMovement(Transform StartPos)
+    public void SetStartPosition(Vector3 StartPos)
     {
         this.startPos = StartPos;
-        transform.position = StartPos.position;
+        transform.position = StartPos;
     }
 
     public void SetEnemyMovement(float RotateSpeed, float MoveSpeedX, float MoveSpeedY, float YTarget, float XTarget, bool MoveRight, int MoveType)
@@ -125,6 +125,6 @@ public class MoveEnemyScript : NetworkBehaviour {
     [ServerCallback]
     private void OnBecameInvisible()
     {
-         Network.Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

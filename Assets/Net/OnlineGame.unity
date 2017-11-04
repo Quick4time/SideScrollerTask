@@ -1130,7 +1130,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 410293094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 5.5, z: 0}
+  m_LocalPosition: {x: 0, y: 5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2906,7 +2906,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1006144212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2929,6 +2929,9 @@ MonoBehaviour:
   - {fileID: 1500125823266822, guid: 59942f29eb1176c488ac424ffa0c94f1, type: 2}
   - {fileID: 1027485206843408, guid: 38928f224d955b844b489cc32ddf5108, type: 2}
   - {fileID: 1296489882495964, guid: 43a3ffe5a7a337542a76be6430bf9a43, type: 2}
+  - {fileID: 1355896575396312, guid: 8925a5b8618c0f04da364c3a795d53c6, type: 2}
+  - {fileID: 1768658804522240, guid: 25702db906697a04e84aa65b82bc3709, type: 2}
+  - {fileID: 1529384967107384, guid: 1418d64ce50cc5443a12096ec841a706, type: 2}
   waveDelays:
   - 5
   - 4
