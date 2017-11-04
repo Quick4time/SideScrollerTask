@@ -21,7 +21,12 @@ sealed class GMNetwork : NetworkBehaviour
     [SerializeField]
     private int waveTracker;
     private int numGoForWave;
-    MoveEnemyScript[] getMS;
+    MoveAsteroidNet[] getMoveAsteroids;
+    MoveEnemyScript[] getMoveEnemy;
+    [SerializeField]
+    [SyncVar(hook = "RandomNumberSyncCallback")]
+    private int randomInt;
+    private float timerUpdateRandomValue = 0;
 
 
     private void Awake()
@@ -41,6 +46,16 @@ sealed class GMNetwork : NetworkBehaviour
             allDestroyed &= (sShips[i].lifeCount == 0);
         }
 
+        if (isServer)
+        {
+            timerUpdateRandomValue += Time.deltaTime;
+            if (timerUpdateRandomValue >= 2)
+            {
+                randomInt = Random.Range(1, 5); // от 1 до 4-х
+                timerUpdateRandomValue = 0;
+            }
+        }
+
         if (allDestroyed)
         {
             StartCoroutine(ReturnToLobby());
@@ -52,12 +67,13 @@ sealed class GMNetwork : NetworkBehaviour
 
             if (waveDelays[waveTracker] < 0)
             {
-                SpawnWaves(2);
+                SpawnWaves(randomInt);
                 waveTracker++;
-            }
-            else if (waveTracker >= waveDelays.Length)
-            {
-                spawningWaves = false;
+
+                if (waveTracker >= waveDelays.Length)
+                {
+                    spawningWaves = false;
+                }
             }
         }
 
@@ -73,6 +89,12 @@ sealed class GMNetwork : NetworkBehaviour
         }
     }
 
+    void RandomNumberSyncCallback(int newNumber)
+    {
+        if (isServer) return;
+        randomInt = newNumber;
+    }
+
     private void SpawnWaves(int numWaves)
     {
         GameObject[] selectorArr;
@@ -81,28 +103,28 @@ sealed class GMNetwork : NetworkBehaviour
         {
             case 1:
                 selectorArr = new GameObject[5];
-                getMS = new MoveEnemyScript[selectorArr.Length];
+                getMoveEnemy = new MoveEnemyScript[selectorArr.Length];
                 for (int i = 0; i < 5; i++)
                 {
                     go = Instantiate(enemyPrefabs[4], waveSpawnPoint.position, Quaternion.identity);
                     selectorArr[i] = go;
                     NetworkServer.Spawn(selectorArr[i]);
-                    getMS[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
+                    getMoveEnemy[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
                 }
-                getMS[0].SetStartPosition(new Vector3(0.0f, 6.2f, 0.0f));
-                getMS[0].SetEnemyMovement(0.0f, 2.5f, 1.5f, 4.0f, 0.0f, false, 2);
-                getMS[1].SetStartPosition(new Vector3(1.5f, 7.5f, 0.0f));
-                getMS[1].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, -2.0f, false, 2);
-                getMS[2].SetStartPosition(new Vector3(3.0f, 8.5f, 0.0f));
-                getMS[2].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, -3.0f, false, 2);
-                getMS[3].SetStartPosition(new Vector3(-1.5f, 7.5f, 0.0f));
-                getMS[3].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, 2.0f, true, 2);
-                getMS[4].SetStartPosition(new Vector3(-3.0f, 8.5f, 0.0f));
-                getMS[4].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, 3.0f, true, 2);
+                getMoveEnemy[0].SetStartPosition(new Vector3(0.0f, 6.2f, 0.0f));
+                getMoveEnemy[0].SetEnemyMovement(0.0f, 2.5f, 1.5f, 4.0f, 0.0f, false, 2);
+                getMoveEnemy[1].SetStartPosition(new Vector3(1.5f, 7.5f, 0.0f));
+                getMoveEnemy[1].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, -2.0f, false, 2);
+                getMoveEnemy[2].SetStartPosition(new Vector3(3.0f, 8.5f, 0.0f));
+                getMoveEnemy[2].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, -3.0f, false, 2);
+                getMoveEnemy[3].SetStartPosition(new Vector3(-1.5f, 7.5f, 0.0f));
+                getMoveEnemy[3].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, 2.0f, true, 2);
+                getMoveEnemy[4].SetStartPosition(new Vector3(-3.0f, 8.5f, 0.0f));
+                getMoveEnemy[4].SetEnemyMovement(0.0f, 3.5f, 1.5f, 4.0f, 3.0f, true, 2);
                 break;
             case 2:
                 selectorArr = new GameObject[8];
-                getMS = new MoveEnemyScript[selectorArr.Length];
+                getMoveEnemy = new MoveEnemyScript[selectorArr.Length];
                 for (int i = 0; i < 8; i++)
                 {
                     if (i < 4)
@@ -112,26 +134,84 @@ sealed class GMNetwork : NetworkBehaviour
 
                     selectorArr[i] = go;
                     NetworkServer.Spawn(selectorArr[i]);
-                    getMS[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
+                    getMoveEnemy[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
                 }
-                getMS[0].SetStartPosition(new Vector3(-3.0f, 6.0f, 0.0f));
-                getMS[0].SetEnemyMovement(0.0f, 2.0f, 2.0f, 2.0f, 3.0f, true, 2);
-                getMS[1].SetStartPosition(new Vector3(-1.0f, 6.6f, 0.0f));
-                getMS[1].SetEnemyMovement(0.0f, 2.0f, 2.0f, 3.0f, 1.0f, true, 2);
-                getMS[2].SetStartPosition(new Vector3(3.0f, 7.6f, 0.0f));
-                getMS[2].SetEnemyMovement(0.0f, 2.0f, 2.0f, 4.0f, -3.0f, false, 2);
-                getMS[3].SetStartPosition(new Vector3(-1.0f, 8.6f, 0.0f));
-                getMS[3].SetEnemyMovement(0.0f, 2.0f, 2.0f, 5.0f, 1.0f, true, 2);
-                getMS[4].SetStartPosition(new Vector3(3.0f, 6.0f, 0.0f));
-                getMS[4].SetEnemyMovement(0.0f, 2.0f, 2.0f, 2.0f, -3.0f, false, 2);
-                getMS[5].SetStartPosition(new Vector3(1.0f, 6.6f, 0.0f));
-                getMS[5].SetEnemyMovement(0.0f, 2.0f, 2.0f, 3.0f, -1.0f, false, 2);
-                getMS[6].SetStartPosition(new Vector3(-3.0f, 7.6f, 0.0f));
-                getMS[6].SetEnemyMovement(0.0f, 2.0f, 2.0f, 4.0f, 3.0f, true, 2);
-                getMS[7].SetStartPosition(new Vector3(1.0f, 8.6f, 0.0f));
-                getMS[7].SetEnemyMovement(0.0f, 2.0f, 2.0f, 5.0f, -1.0f, false, 2);
+                getMoveEnemy[0].SetStartPosition(new Vector3(-3.0f, 6.0f, 0.0f));
+                getMoveEnemy[0].SetEnemyMovement(0.0f, 2.0f, 2.0f, 2.0f, 3.0f, true, 2);
+                getMoveEnemy[1].SetStartPosition(new Vector3(-1.0f, 6.6f, 0.0f));
+                getMoveEnemy[1].SetEnemyMovement(0.0f, 2.0f, 2.0f, 3.0f, 1.0f, true, 2);
+                getMoveEnemy[2].SetStartPosition(new Vector3(3.0f, 7.6f, 0.0f));
+                getMoveEnemy[2].SetEnemyMovement(0.0f, 2.0f, 2.0f, 4.0f, -3.0f, false, 2);
+                getMoveEnemy[3].SetStartPosition(new Vector3(-1.0f, 8.6f, 0.0f));
+                getMoveEnemy[3].SetEnemyMovement(0.0f, 2.0f, 2.0f, 5.0f, 1.0f, true, 2);
+                getMoveEnemy[4].SetStartPosition(new Vector3(3.0f, 6.0f, 0.0f));
+                getMoveEnemy[4].SetEnemyMovement(0.0f, 2.0f, 2.0f, 2.0f, -3.0f, false, 2);
+                getMoveEnemy[5].SetStartPosition(new Vector3(1.0f, 6.6f, 0.0f));
+                getMoveEnemy[5].SetEnemyMovement(0.0f, 2.0f, 2.0f, 3.0f, -1.0f, false, 2);
+                getMoveEnemy[6].SetStartPosition(new Vector3(-3.0f, 7.6f, 0.0f));
+                getMoveEnemy[6].SetEnemyMovement(0.0f, 2.0f, 2.0f, 4.0f, 3.0f, true, 2);
+                getMoveEnemy[7].SetStartPosition(new Vector3(1.0f, 8.6f, 0.0f));
+                getMoveEnemy[7].SetEnemyMovement(0.0f, 2.0f, 2.0f, 5.0f, -1.0f, false, 2);
                 break;
             case 3:
+                selectorArr = new GameObject[7];
+                getMoveEnemy = new MoveEnemyScript[selectorArr.Length];
+                for (int i = 0; i < 7; i++)
+                {
+                    go = Instantiate(enemyPrefabs[5], waveSpawnPoint.position, Quaternion.identity);
+                    selectorArr[i] = go;
+                    NetworkServer.Spawn(selectorArr[i]);
+                    getMoveEnemy[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
+                }
+                getMoveEnemy[0].SetStartPosition(new Vector3(3.5f, 11.0f, 0.0f));
+                getMoveEnemy[0].SetEnemyMovement(25.0f, 2.0f, 3.0f, 3.0f, 0.0f, false, 1);
+                getMoveEnemy[1].SetStartPosition(new Vector3(-2.5f, 10.0f, 0.0f));
+                getMoveEnemy[1].SetEnemyMovement(25.0f, 2.0f, 3.0f, 2.0f, 0.0f, true, 1);
+                getMoveEnemy[2].SetStartPosition(new Vector3(2.5f, 9.0f, 0.0f));
+                getMoveEnemy[2].SetEnemyMovement(25.0f, 2.0f, 3.0f, 1.0f, 0.0f, false, 1);
+                getMoveEnemy[3].SetStartPosition(new Vector3(-1.5f, 8.0f, 0.0f));
+                getMoveEnemy[3].SetEnemyMovement(25.0f, 2.0f, 3.0f, 0.0f, 0.0f, true, 1);
+                getMoveEnemy[4].SetStartPosition(new Vector3(1.5f, 7.0f, 0.0f));
+                getMoveEnemy[4].SetEnemyMovement(25.0f, 2.0f, 3.0f, -1.0f, 0.0f, false, 1);
+                getMoveEnemy[5].SetStartPosition(new Vector3(-0.5f, 6.0f, 0.0f));
+                getMoveEnemy[5].SetEnemyMovement(25.0f, 2.0f, 3.0f, -2.0f, 0.0f, true, 1);
+                getMoveEnemy[6].SetStartPosition(new Vector3(-3.5f, 12.0f, 0.0f));
+                getMoveEnemy[6].SetEnemyMovement(25.0f, 2.0f, 3.0f, 4.0f, 0.0f, true, 1);
+                break;
+            case 4:
+                selectorArr = new GameObject[8];
+                getMoveEnemy = new MoveEnemyScript[selectorArr.Length];
+                for (int i = 0; i < 8; i++)
+                {
+                    go = Instantiate(enemyPrefabs[6], waveSpawnPoint.position, Quaternion.identity);
+                    selectorArr[i] = go;
+                    NetworkServer.Spawn(selectorArr[i]);
+                    getMoveEnemy[i] = selectorArr[i].GetComponent<MoveEnemyScript>();
+                }
+                getMoveEnemy[0].SetStartPosition(new Vector3(-3.0f, 8.5f, 0.0f));
+                getMoveEnemy[0].SetEnemyMovement(0.0f, 2.5f, 2.0f, 3.0f, 0.0f, true, 0);
+                getMoveEnemy[1].SetStartPosition(new Vector3(-3.0f, 7.5f, 0.0f));
+                getMoveEnemy[1].SetEnemyMovement(0.0f, 2.5f, 2.0f, 3.0f, 0.0f, true, 0);
+                getMoveEnemy[2].SetStartPosition(new Vector3(-3.0f, 6.5f, 0.0f));
+                getMoveEnemy[2].SetEnemyMovement(0.0f, 2.5f, 2.0f, 3.0f, 0.0f, true, 0);
+                getMoveEnemy[3].SetStartPosition(new Vector3(-3.0f, 9.5f, 0.0f));
+                getMoveEnemy[3].SetEnemyMovement(0.0f, 2.5f, 2.0f, 3.0f, 0.0f, true, 0);
+                getMoveEnemy[4].SetStartPosition(new Vector3(3.0f, 8.5f, 0.0f));
+                getMoveEnemy[4].SetEnemyMovement(0.0f, 2.5f, 2.0f, 3.0f, 0.0f, false, 0);
+                getMoveEnemy[5].SetStartPosition(new Vector3(3.0f, 7.5f, 0.0f));
+                getMoveEnemy[5].SetEnemyMovement(0.0f, 2.5f, 2.0f, 3.0f, 0.0f, false, 0);
+                getMoveEnemy[6].SetStartPosition(new Vector3(3.0f, 6.5f, 0.0f));
+                getMoveEnemy[6].SetEnemyMovement(0.0f, 2.5f, 2.0f, 3.0f, 0.0f, false, 0);
+                getMoveEnemy[7].SetStartPosition(new Vector3(3.0f, 9.5f, 0.0f));
+                getMoveEnemy[7].SetEnemyMovement(0.0f, 2.5f, 2.0f, 3.0f, 0.0f, false, 0);
+                break;
+            case 5:
+
+                break;
+            case 6:
+
+                break;
+            case 7:
 
                 break;
         }
@@ -143,3 +223,4 @@ sealed class GMNetwork : NetworkBehaviour
         LobbyManager.s_Singleton.ServerReturnToLobby();
     }
 }
+

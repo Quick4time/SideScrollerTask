@@ -15,17 +15,6 @@ public class MoveAsteroidNet : NetworkBehaviour
     private void Start()
     {
         SetStartPos(startPos);
-        var random = new[]
-        {
-            ProportionValue.Create(0.2f, 25.0f),
-            ProportionValue.Create(0.2f, -40.0f),
-            ProportionValue.Create(0.2f, 35.0f),
-            ProportionValue.Create(0.2f, -20.0f),
-            ProportionValue.Create(0.2f, 50.0f)
-        };
-
-        rotateSpeed = random.ChoseByRandom();
-        moveSpeed = Random.Range(1.0f, 3.0f);
     }
 
     [ServerCallback]
@@ -39,18 +28,5 @@ public class MoveAsteroidNet : NetworkBehaviour
     {
         this.startPos = StartPos;
         transform.position = StartPos.position;
-    }
-
-    [ServerCallback]
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-        if (collision.CompareTag("Shield"))
-        {
-            Destroy(gameObject);
-        }
     }
 }

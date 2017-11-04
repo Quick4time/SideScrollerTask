@@ -2937,8 +2937,15 @@ MonoBehaviour:
   - 4
   - 3
   - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
   spawningWaves: 1
   waveTracker: 0
+  randomInt: 0
 --- !u!114 &1006144215
 MonoBehaviour:
   m_ObjectHideFlags: 0
